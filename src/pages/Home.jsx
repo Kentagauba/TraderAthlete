@@ -1,4 +1,4 @@
-import { Check, X, ShieldCheck, TrendingUp, Sparkles, Zap, ChevronDown, Star } from 'lucide-react'
+import { Check, X, ChevronDown, Target, Activity, Users, Zap } from 'lucide-react'
 import { useState } from 'react'
 import { LINKS, TIER } from '../config.js'
 
@@ -8,12 +8,10 @@ import { LINKS, TIER } from '../config.js'
 function Hero() {
   return (
     <section className="section" style={{ paddingTop: 80, position: 'relative', overflow: 'hidden' }}>
-      <div className="ambient-glow" style={{ width: 600, height: 600, background: 'var(--neon)', top: -200, right: -200, opacity: 0.15 }} />
-      <div className="ambient-glow" style={{ width: 400, height: 400, background: 'var(--neon)', bottom: -100, left: -100, opacity: 0.08 }} />
-
+      <div className="ambient-glow" style={{ width: 600, height: 600, background: 'var(--neon)', top: -200, right: -200, opacity: 0.12 }} />
+      <div className="ambient-glow" style={{ width: 400, height: 400, background: 'var(--neon)', bottom: -100, left: -100, opacity: 0.06 }} />
       <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-        {/* Founder pill */}
-        <div className="reveal" style={{ display: 'flex', justifyContent: 'center', marginBottom: 56 }}>
+        <div className="reveal" style={{ display: 'flex', justifyContent: 'center', marginBottom: 48 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 14, padding: '8px 18px 8px 8px', background: 'var(--card)', border: '1px solid var(--card-border)', borderRadius: 999 }}>
             <div style={{
               width: 44, height: 44, borderRadius: '50%',
@@ -26,13 +24,12 @@ function Hero() {
               KENTA
             </div>
             <div>
-              <div style={{ fontWeight: 700, fontSize: '0.95rem' }}>Kenta</div>
-              <div style={{ color: 'var(--text-muted)', fontSize: '0.8rem' }}>7-figure funded trader & founder</div>
+              <div style={{ fontWeight: 700, fontSize: '0.95rem' }}>Kenta Gauba</div>
+              <div style={{ color: 'var(--text-muted)', fontSize: '0.8rem' }}>Founder · Discretionary Futures Trader</div>
             </div>
           </div>
         </div>
 
-        {/* Main grid */}
         <div className="hero-grid" style={{
           display: 'grid',
           gridTemplateColumns: '1.1fr 1fr',
@@ -41,11 +38,11 @@ function Hero() {
         }}>
           <div className="reveal" style={{ animationDelay: '0.1s' }}>
             <h1 className="h-display">
-              LIVE THE<br />
-              <span className="text-neon">1% LIFESTYLE</span>
+              TRADE LIKE<br />
+              <span className="text-neon">AN ATHLETE</span>
             </h1>
-            <p style={{ fontSize: '1.15rem', color: 'var(--text-muted)', marginTop: 24, maxWidth: 540 }}>
-              Most traders fail not because of the market — but because they have no system. We fix that.
+            <p style={{ fontSize: '1.15rem', color: 'var(--text-muted)', marginTop: 24, maxWidth: 540, lineHeight: 1.65 }}>
+              Most traders fail because they treat trading like gambling. We train it like sport — deliberate practice, recovery, state management, accountability. Built for serious futures traders.
             </p>
 
             <div style={{
@@ -62,45 +59,37 @@ function Hero() {
                 alignItems: 'center',
               }}>
                 {[
-                  ['Guessing entries', 'Sniper precision'],
-                  ['Blown accounts', 'Funded and withdrawing'],
-                  ['No system', 'A blueprint that repeats'],
-                  ['Emotional trading', 'Process-driven execution'],
-                  ['9-5 loop', '1 hour a day, anywhere'],
+                  ['Random entries', 'Defined setups'],
+                  ['Revenge trading', 'Process over outcome'],
+                  ['Hope and fear', 'Trained state control'],
+                  ['Signal chasing', 'Your own read'],
+                  ['Isolation', 'Serious cohort'],
                 ].map(([bad, good], i) => (
                   <FragmentRow key={i} bad={bad} good={good} />
                 ))}
               </div>
             </div>
 
-            {/* Rating */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginTop: 36 }}>
-              <div style={{ display: 'flex' }}>
-                {[0,1,2,3,4].map(i => (
-                  <div key={i} style={{
-                    width: 32, height: 32, borderRadius: '50%',
-                    background: 'var(--card-2)',
-                    border: '2px solid var(--bg)',
-                    marginLeft: i === 0 ? 0 : -10,
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    color: 'var(--text-dim)',
-                  }}>
-                    <span style={{ fontSize: 13 }}>👤</span>
-                  </div>
-                ))}
+            <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginTop: 36, flexWrap: 'wrap' }}>
+              <div style={{
+                padding: '10px 16px',
+                background: 'var(--neon-bg)',
+                border: '1px solid var(--neon)',
+                borderRadius: 8,
+                fontSize: '0.85rem',
+                fontWeight: 700,
+                letterSpacing: '0.08em',
+                color: 'var(--neon)',
+                textTransform: 'uppercase',
+              }}>
+                Founding Cohort — Now Open
               </div>
-              <div>
-                <div style={{ display: 'flex', gap: 2, color: 'var(--neon)' }}>
-                  {[0,1,2,3,4].map(i => <Star key={i} size={14} fill="var(--neon)" stroke="var(--neon)" />)}
-                </div>
-                <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginTop: 2 }}>
-                  <strong style={{ color: 'var(--text)' }}>4.9/5</strong> from 500+ successful students
-                </div>
+              <div style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>
+                First 100 at \${TIER.current}/mo · Rate locked for life
               </div>
             </div>
           </div>
 
-          {/* Hero image card */}
           <div className="reveal" style={{ animationDelay: '0.25s' }}>
             <div style={{
               position: 'relative',
@@ -109,147 +98,63 @@ function Hero() {
               border: '1px solid var(--card-border)',
               aspectRatio: '4/5',
               maxHeight: 580,
+              background: 'linear-gradient(180deg, #0a0a0a 0%, #0d1f15 100%)',
               boxShadow: '0 30px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(0,255,136,0.1)',
             }}>
-              {/* Stylized "tropical workspace" — SVG since we don't have the photo */}
               <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" style={{ width: '100%', height: '100%', display: 'block' }}>
                 <defs>
-                  <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="#1a0f3a" />
-                    <stop offset="35%" stopColor="#ff6b35" />
-                    <stop offset="65%" stopColor="#f7931e" />
-                    <stop offset="100%" stopColor="#ffd23f" />
-                  </linearGradient>
-                  <linearGradient id="ocean" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="#ffcb47" />
-                    <stop offset="35%" stopColor="#0e5d8a" />
-                    <stop offset="100%" stopColor="#001a33" />
-                  </linearGradient>
-                  <radialGradient id="sun" cx="0.5" cy="0.5" r="0.5">
-                    <stop offset="0%" stopColor="#fff5a8" />
-                    <stop offset="35%" stopColor="#ffcb47" />
-                    <stop offset="100%" stopColor="#ff6b35" stopOpacity="0" />
+                  <radialGradient id="bgGlow" cx="0.5" cy="0.5" r="0.7">
+                    <stop offset="0%" stopColor="#00ff88" stopOpacity="0.15" />
+                    <stop offset="60%" stopColor="#00ff88" stopOpacity="0.03" />
+                    <stop offset="100%" stopColor="#000000" stopOpacity="0" />
                   </radialGradient>
+                  <linearGradient id="candleGreen" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="#00ff88" />
+                    <stop offset="100%" stopColor="#00cc66" />
+                  </linearGradient>
                 </defs>
-                {/* sky */}
-                <rect width="400" height="290" fill="url(#sky)" />
-                {/* sun */}
-                <circle cx="200" cy="270" r="70" fill="url(#sun)" />
-                {/* ocean */}
-                <rect y="290" width="400" height="210" fill="url(#ocean)" />
-                {/* sun reflection on water */}
-                <ellipse cx="200" cy="298" rx="55" ry="2.5" fill="#fff5a8" opacity="0.85" />
-                <ellipse cx="200" cy="308" rx="35" ry="1.8" fill="#ffcb47" opacity="0.6" />
-                <ellipse cx="200" cy="318" rx="20" ry="1.2" fill="#ffcb47" opacity="0.3" />
-
-                {/* PALM TREES — silhouettes using single path each */}
-                {/* Left palm 1 — tall, leans right */}
-                <path d="M 28 500
-                         L 33 220
-                         Q 34 180 38 165
-                         L 42 165
-                         Q 38 200 36 220
-                         L 36 500 Z" fill="#000" />
-                {/* fronds left palm 1 */}
-                <g fill="#000">
-                  <path d="M 36 168
-                           Q 5 145 -5 140
-                           Q 20 160 36 175 Z" />
-                  <path d="M 36 168
-                           Q 65 138 85 130
-                           Q 55 160 36 175 Z" />
-                  <path d="M 36 168
-                           Q 10 170 -8 195
-                           Q 18 175 36 175 Z" />
-                  <path d="M 36 168
-                           Q 70 175 88 200
-                           Q 60 175 36 175 Z" />
-                  <path d="M 36 168
-                           Q 25 145 18 125
-                           Q 32 152 38 170 Z" />
-                  <circle cx="36" cy="168" r="4" fill="#000" />
+                <rect width="400" height="500" fill="url(#bgGlow)" />
+                <g transform="translate(200, 150)" opacity="0.35" stroke="#00ff88" strokeWidth="1.5" fill="none">
+                  <circle r="50" />
+                  <circle r="50" cx="0" cy="-50" />
+                  <circle r="50" cx="0" cy="50" />
+                  <circle r="50" cx="43.3" cy="-25" />
+                  <circle r="50" cx="43.3" cy="25" />
+                  <circle r="50" cx="-43.3" cy="-25" />
+                  <circle r="50" cx="-43.3" cy="25" />
+                  <circle r="55" opacity="0.5" />
                 </g>
-
-                {/* Left palm 2 — shorter */}
-                <path d="M 75 500
-                         L 78 240
-                         Q 78 215 80 205
-                         L 84 205
-                         Q 82 225 82 240
-                         L 82 500 Z" fill="#000" />
-                <g fill="#000">
-                  <path d="M 81 208
-                           Q 55 188 45 178
-                           Q 65 198 82 215 Z" />
-                  <path d="M 81 208
-                           Q 110 188 130 178
-                           Q 95 200 82 215 Z" />
-                  <path d="M 81 208
-                           Q 60 212 50 230
-                           Q 70 215 82 215 Z" />
-                  <circle cx="81" cy="208" r="3.5" fill="#000" />
-                </g>
-
-                {/* Right palm 1 — tall, leans left */}
-                <path d="M 362 500
-                         L 365 215
-                         Q 364 180 360 165
-                         L 356 165
-                         Q 360 200 362 215
-                         L 362 500 Z" fill="#000" />
-                <g fill="#000">
-                  <path d="M 362 168
-                           Q 395 145 410 138
-                           Q 380 160 362 175 Z" />
-                  <path d="M 362 168
-                           Q 330 138 312 128
-                           Q 345 160 362 175 Z" />
-                  <path d="M 362 168
-                           Q 388 170 408 195
-                           Q 380 175 362 175 Z" />
-                  <path d="M 362 168
-                           Q 332 175 312 200
-                           Q 340 175 362 175 Z" />
-                  <path d="M 362 168
-                           Q 372 145 378 125
-                           Q 366 152 360 170 Z" />
-                  <circle cx="362" cy="168" r="4" fill="#000" />
-                </g>
-
-                {/* Laptop on dark table */}
-                <g transform="translate(140, 360)">
-                  {/* table */}
-                  <ellipse cx="60" cy="120" rx="120" ry="14" fill="#000" opacity="0.55" />
-                  {/* laptop screen back */}
-                  <path d="M 5 35 L 115 35 L 110 105 L 10 105 Z" fill="#1a1a1a" />
-                  {/* screen */}
-                  <rect x="12" y="42" width="96" height="58" fill="#0a0e14" stroke="#222" strokeWidth="0.5" />
-                  {/* base */}
-                  <path d="M 0 105 L 120 105 L 125 112 L -5 112 Z" fill="#2a2a2a" />
-                  {/* candles on screen */}
+                <g transform="translate(40, 280)">
+                  <line x1="0" y1="180" x2="320" y2="180" stroke="#1a3a2a" strokeWidth="1" strokeDasharray="2,4" />
                   {[
-                    [18, 16, true],
-                    [28, 24, true],
-                    [38, 10, false],
-                    [48, 28, true],
-                    [58, 14, false],
-                    [68, 32, true],
-                    [78, 18, true],
-                    [88, 22, false],
-                    [98, 26, true],
-                  ].map(([x, h, green], i) => {
-                    const top = 95 - h
-                    return (
-                      <g key={i}>
-                        <line x1={x+3.5} y1={top - 3} x2={x+3.5} y2={top + h + 3} stroke={green ? "#00ff88" : "#ff4458"} strokeWidth="0.7" />
-                        <rect x={x+0.5} y={top} width="6" height={h} fill={green ? "#00ff88" : "#ff4458"} />
-                      </g>
-                    )
-                  })}
+                    [10, 140, 25, true],
+                    [40, 120, 30, true],
+                    [70, 130, 18, false],
+                    [100, 100, 35, true],
+                    [130, 105, 22, false],
+                    [160, 70, 40, true],
+                    [190, 75, 28, true],
+                    [220, 50, 45, true],
+                    [250, 55, 30, true],
+                    [280, 25, 50, true],
+                  ].map(([x, y, h, up], i) => (
+                    <g key={i}>
+                      <line x1={x + 7} y1={y - 8} x2={x + 7} y2={y + h + 8} stroke={up ? '#00ff88' : '#ff4458'} strokeWidth="1.2" opacity="0.8" />
+                      <rect x={x} y={y} width="14" height={h} fill={up ? 'url(#candleGreen)' : '#ff4458'} opacity={up ? '1' : '0.7'} />
+                    </g>
+                  ))}
+                </g>
+                <g transform="translate(30, 40)">
+                  <rect x="0" y="0" width="130" height="50" rx="8" fill="#000" fillOpacity="0.6" stroke="#1a3a2a" />
+                  <text x="12" y="20" fill="#00ff88" fontSize="9" fontWeight="700" fontFamily="monospace" letterSpacing="0.05em">SETUPS THIS WEEK</text>
+                  <text x="12" y="40" fill="#ffffff" fontSize="20" fontWeight="800" fontFamily="monospace">04</text>
+                </g>
+                <g transform="translate(240, 40)">
+                  <rect x="0" y="0" width="130" height="50" rx="8" fill="#000" fillOpacity="0.6" stroke="#1a3a2a" />
+                  <text x="12" y="20" fill="#00ff88" fontSize="9" fontWeight="700" fontFamily="monospace" letterSpacing="0.05em">RISK / TRADE</text>
+                  <text x="12" y="40" fill="#ffffff" fontSize="20" fontWeight="800" fontFamily="monospace">0.5%</text>
                 </g>
               </svg>
-
-              {/* Caption bar at bottom */}
               <div style={{
                 position: 'absolute',
                 bottom: 20,
@@ -261,14 +166,13 @@ function Hero() {
                 padding: '10px 20px',
                 display: 'flex', alignItems: 'center', gap: 10,
               }}>
-                <Check size={18} color="var(--neon)" strokeWidth={3} />
-                <span style={{ color: 'var(--neon)', fontWeight: 600, fontSize: '0.95rem' }}>Escape the Matrix</span>
+                <Target size={16} color="var(--neon)" strokeWidth={2.5} />
+                <span style={{ color: 'var(--neon)', fontWeight: 600, fontSize: '0.9rem' }}>Train the mind. Trade the edge.</span>
               </div>
             </div>
           </div>
         </div>
       </div>
-
       <style>{`
         @media (max-width: 900px) {
           .hero-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
@@ -298,14 +202,14 @@ function FragmentRow({ bad, good }) {
 }
 
 // ============================================================
-// STATS STRIP
+// STATS STRIP — real, not fabricated
 // ============================================================
 function StatsStrip() {
   const stats = [
-    { value: '$200K+', label: 'IN VERIFIED STUDENT PROP PAYOUTS' },
-    { value: 'LIVE', label: 'DOCUMENTED LIVE SETUPS, REVIEWED WEEKLY' },
-    { value: '50+', label: 'FUNDED TRADERS' },
-    { value: '24/7', label: 'DIRECT ACCESS TO ME' },
+    { value: 'MNQ · NQ · ES', label: 'MARKETS I TRADE LIVE', big: false },
+    { value: 'NY HOURS', label: 'WHEN I AM IN THE CHAIR', big: false },
+    { value: '100', label: 'FOUNDING COHORT CAP', big: true },
+    { value: 'DIRECT', label: 'ACCESS TO ME', big: false },
   ]
   return (
     <section style={{
@@ -324,9 +228,9 @@ function StatsStrip() {
           {stats.map((s, i) => (
             <div key={i}>
               <div className="display" style={{
-                fontSize: '3.5rem',
-                color: i === 1 ? 'var(--neon)' : 'var(--text)',
-                textShadow: i === 1 ? '0 0 30px var(--neon-glow)' : 'none',
+                fontSize: s.big ? '3.5rem' : '2rem',
+                color: s.big ? 'var(--neon)' : 'var(--text)',
+                textShadow: s.big ? '0 0 30px var(--neon-glow)' : 'none',
               }}>
                 {s.value}
               </div>
@@ -353,47 +257,41 @@ function StatsStrip() {
 }
 
 // ============================================================
-// TESTIMONIALS
+// WHO THIS IS FOR (replaces fake testimonials)
 // ============================================================
-function Testimonials() {
+function WhoFor() {
   const items = [
     {
-      icon: <Check size={22} color="var(--neon)" strokeWidth={3} />,
-      title: 'Passed $100K Prop Eval — Week 3',
-      body: '"Hit my profit target in Week 3 following the morning session setups exactly. First time I\'ve ever passed an evaluation without blowing it on the last day."',
-      author: 'David R.',
+      icon: <Activity size={22} color="var(--neon)" strokeWidth={2.5} />,
+      title: 'You trade discretionary',
+      body: 'You do not want signals fed to you. You want to develop your own read, your own setups, your own conviction — with better feedback loops than you can build alone.',
     },
     {
-      icon: <TrendingUp size={22} color="var(--neon)" strokeWidth={2.5} />,
-      title: 'First funded payout: $2,340',
-      body: '"Just received my first payout via Deel. The risk management rules changed everything for me. Treating it like a business instead of a casino."',
-      author: 'Marcus T.',
+      icon: <Target size={22} color="var(--neon)" strokeWidth={2.5} />,
+      title: 'You see trading as performance',
+      body: 'Sleep, state, nutrition, recovery — you already understand the body matters. Now you want to train the mind with the same rigor you bring to everything else.',
     },
     {
-      icon: <ShieldCheck size={22} color="var(--neon)" strokeWidth={2.5} />,
-      title: 'Finally Consistent',
-      body: '"Escaped the boom and bust cycle. The community keeps me accountable and the daily live streams prevent me from taking stupid setups."',
-      author: 'Sarah J.',
+      icon: <Users size={22} color="var(--neon)" strokeWidth={2.5} />,
+      title: 'You have outgrown chat groups',
+      body: 'The pump-and-emoji crowd is exhausting. You want a smaller, sharper room with traders who actually journal, review, and improve week over week.',
     },
     {
       icon: <Zap size={22} color="var(--neon)" strokeWidth={2.5} />,
-      title: '$150K Funded Achieved',
-      body: '"The \'Sniper\' framework simplifies the charts so much. No more cluttered indicators. Just pure price action and execution. Best investment I\'ve made."',
-      author: 'Michael K.',
+      title: 'You want a real cohort',
+      body: 'Trading alone makes you slow. A cohort of serious traders compresses years of trial-and-error into months of compounded learning.',
     },
   ]
-
   return (
     <section className="section">
       <div className="container">
         <div style={{ textAlign: 'center', marginBottom: 60 }}>
-          <h2 className="h-section">Numbers don't lie.</h2>
-          <p style={{ color: 'var(--text-muted)', fontSize: '1.15rem', marginTop: 16, maxWidth: 640, marginLeft: 'auto', marginRight: 'auto' }}>
-            Stop listening to fake gurus with paper trading accounts. We trade live. We post receipts. We withdraw.
+          <h2 className="h-section">Built for traders who train</h2>
+          <p style={{ color: 'var(--text-muted)', fontSize: '1.15rem', marginTop: 16, maxWidth: 640, marginLeft: 'auto', marginRight: 'auto', lineHeight: 1.6 }}>
+            This is not for someone looking for a magic indicator. It is for the trader who already knows the work is internal — and wants the structure to do it well.
           </p>
         </div>
-
-        <div className="testimonials-grid" style={{
+        <div className="who-grid" style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(2, 1fr)',
           gap: 24,
@@ -402,7 +300,7 @@ function Testimonials() {
             <article key={i} className="card" style={{ display: 'flex', flexDirection: 'column' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 18 }}>
                 <div style={{
-                  width: 40, height: 40, borderRadius: '50%',
+                  width: 44, height: 44, borderRadius: '50%',
                   background: 'var(--neon-bg)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                 }}>
@@ -411,19 +309,13 @@ function Testimonials() {
                 <h3 style={{ fontSize: '1.15rem', fontWeight: 700 }}>{t.title}</h3>
               </div>
               <p style={{ color: 'var(--text-muted)', flex: 1, fontSize: '1rem', lineHeight: 1.65 }}>{t.body}</p>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 22, color: 'var(--neon)', fontWeight: 600, fontSize: '0.9rem' }}>
-                <span style={{ width: 14, height: 14, display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                </span>
-                {t.author}
-              </div>
             </article>
           ))}
         </div>
       </div>
       <style>{`
         @media (max-width: 768px) {
-          .testimonials-grid { grid-template-columns: 1fr !important; }
+          .who-grid { grid-template-columns: 1fr !important; }
         }
       `}</style>
     </section>
@@ -441,12 +333,11 @@ function Pricing() {
     }}>
       <div className="container">
         <div style={{ textAlign: 'center', marginBottom: 60 }}>
-          <h2 className="h-section">Stop wasting time</h2>
-          <p className="text-neon" style={{ fontWeight: 700, fontSize: '1.05rem', letterSpacing: '0.1em', marginTop: 12, textTransform: 'uppercase' }}>
-            Get the blueprint now.
+          <h2 className="h-section">Inner Circle VIP</h2>
+          <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', marginTop: 14, maxWidth: 600, marginLeft: 'auto', marginRight: 'auto' }}>
+            One membership. Everything you need to train and trade with serious people.
           </p>
         </div>
-
         <div className="pricing-grid" style={{
           display: 'grid',
           gridTemplateColumns: '1fr 1fr',
@@ -455,42 +346,29 @@ function Pricing() {
           maxWidth: 1080,
           margin: '0 auto',
         }}>
-          {/* Left — What you're getting */}
           <div style={{ padding: '32px 8px' }}>
             <h3 className="display" style={{ fontSize: '1.75rem', marginBottom: 30 }}>
-              What you're getting today:
+              What is inside:
             </h3>
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 18 }}>
               {[
-                ['The "Sniper" Trading Masterclass', '$997', false],
-                ['Daily Live Trading Sessions', '$1,497', true],
-                ['Private VIP Discord & Alerts', '$497', false],
-              ].map(([item, price, highlight], i) => (
-                <div key={i} style={{
-                  display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-                  padding: '18px 0',
-                  borderBottom: '1px solid var(--card-border)',
-                }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                    {highlight && <Zap size={18} color="var(--neon)" fill="var(--neon)" />}
-                    <span style={{ color: highlight ? 'var(--neon)' : 'var(--text)', fontWeight: highlight ? 700 : 500, fontSize: '1.05rem' }}>
-                      {item}
-                    </span>
+                ['Live trade sessions', 'Real-time calls on MNQ, NQ, ES during NY hours'],
+                ['Pre-market briefings', 'Key levels, bias, and game plan before the open'],
+                ['Weekly live Q&A', 'Bring your charts, your trades, your questions'],
+                ['Mental game library', 'The inner work most traders skip'],
+                ['Private Discord', 'Serious cohort, no pump-and-emoji noise'],
+                ['Direct access', 'Ask me questions, get real feedback'],
+              ].map(([title, desc], i) => (
+                <li key={i} style={{ display: 'flex', gap: 14, alignItems: 'flex-start' }}>
+                  <Check size={22} color="var(--neon)" strokeWidth={3} style={{ flexShrink: 0, marginTop: 2 }} />
+                  <div>
+                    <div style={{ fontWeight: 700, fontSize: '1.02rem', marginBottom: 2 }}>{title}</div>
+                    <div style={{ color: 'var(--text-muted)', fontSize: '0.92rem', lineHeight: 1.5 }}>{desc}</div>
                   </div>
-                  <span style={{ color: 'var(--text-dim)', textDecoration: 'line-through', fontSize: '1.05rem' }}>{price}</span>
-                </div>
+                </li>
               ))}
-              <div style={{
-                display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-                paddingTop: 24,
-              }}>
-                <span className="display" style={{ fontSize: '1.5rem' }}>Total Value:</span>
-                <span style={{ color: 'var(--danger)', textDecoration: 'line-through', fontSize: '1.8rem', fontWeight: 700 }}>$2,991</span>
-              </div>
-            </div>
+            </ul>
           </div>
-
-          {/* Right — Pricing Card */}
           <div className="card card-glow" style={{ position: 'relative', display: 'flex', flexDirection: 'column' }}>
             <div style={{
               position: 'absolute',
@@ -503,46 +381,37 @@ function Pricing() {
               fontWeight: 800,
               fontSize: '0.78rem',
               letterSpacing: '0.12em',
-              animation: 'pulseGlow 2.2s ease-in-out infinite',
             }}>
-              CLOSING SOON
+              FOUNDING COHORT
             </div>
-
             <h3 className="display" style={{ fontSize: '1.6rem', textAlign: 'center', marginTop: 14, marginBottom: 18 }}>
               Inner Circle VIP
             </h3>
-
             <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'center', gap: 12, marginBottom: 8 }}>
-              <span style={{ color: 'var(--text-dim)', textDecoration: 'line-through', fontSize: '1.6rem' }}>${TIER.next}</span>
-              <span className="display text-neon" style={{ fontSize: '4.5rem', textShadow: '0 0 40px var(--neon-glow)' }}>${TIER.current}</span>
+              <span style={{ color: 'var(--text-dim)', textDecoration: 'line-through', fontSize: '1.6rem' }}>\${TIER.next}</span>
+              <span className="display text-neon" style={{ fontSize: '4.5rem', textShadow: '0 0 40px var(--neon-glow)' }}>\${TIER.current}</span>
               <span style={{ color: 'var(--text-muted)', fontSize: '1.1rem' }}>/mo</span>
             </div>
-
-            <p style={{ color: 'var(--danger)', textAlign: 'center', fontSize: '0.85rem', fontWeight: 700, letterSpacing: '0.08em', marginBottom: 26, textTransform: 'uppercase' }}>
-              Price jumps to ${TIER.next} at {TIER.capacity} members
+            <p style={{ color: 'var(--text-muted)', textAlign: 'center', fontSize: '0.9rem', marginBottom: 26, lineHeight: 1.5 }}>
+              First 100 members lock in this rate.<br />
+              Price moves to <strong style={{ color: 'var(--text)' }}>\${TIER.next}/mo</strong> when the cohort fills.
             </p>
-
-            <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 28px', display: 'flex', flexDirection: 'column', gap: 14 }}>
+            <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 28px', display: 'flex', flexDirection: 'column', gap: 12 }}>
               {[
-                'Complete Sniper Masterclass',
-                'Daily Live Trading Sessions',
-                'Prop Firm Passing Blueprint',
-                'Direct Access to Me 24/7',
-                'VIP Networking Events',
+                'Founding rate locked for life',
+                'Live trade calls + mental game training',
+                'Private Discord cohort',
+                'Cancel anytime — no contracts',
               ].map((feat, i) => (
-                <li key={i} style={{ display: 'flex', alignItems: 'center', gap: 12, fontSize: '1.02rem' }}>
-                  <Check size={20} color="var(--neon)" strokeWidth={3} />
+                <li key={i} style={{ display: 'flex', alignItems: 'center', gap: 12, fontSize: '0.98rem' }}>
+                  <Check size={18} color="var(--neon)" strokeWidth={3} />
                   {feat}
                 </li>
               ))}
             </ul>
-
             <a href={LINKS.whopJoin} target="_blank" rel="noreferrer" className="btn btn-primary btn-lg" style={{ width: '100%' }}>
-              CLAIM YOUR SPOT NOW
+              LOCK IN FOUNDING PRICING
             </a>
-            <p style={{ textAlign: 'center', color: 'var(--text-muted)', fontSize: '0.85rem', marginTop: 12 }}>
-              Cancel anytime.
-            </p>
           </div>
         </div>
       </div>
@@ -562,30 +431,31 @@ function FAQ() {
   const [open, setOpen] = useState(0)
   const items = [
     {
-      q: 'Who is this community for?',
-      a: 'Serious traders who want to stop guessing and start executing with a system. Whether you\'re a beginner who needs structure or an experienced trader stuck at break-even, the Inner Circle gives you the framework, accountability, and live trading environment to break through.',
+      q: 'What markets do you trade?',
+      a: 'Primarily MNQ and NQ (Nasdaq futures), with ES (S&P futures) as a secondary focus. All live calls run on NY market hours.',
     },
     {
-      q: 'How much money do I need to start trading?',
-      a: 'You can start with as little as a small prop firm evaluation ($150-$300). I recommend using prop firms (Topstep, Apex) to learn rather than risking your own capital. We walk you through prop firm selection, sizing, and the exact pass strategy inside the community.',
+      q: 'Is this just signals?',
+      a: 'No. Signals are a small part of it. The core focus is helping you build the mental and structural game of a consistent trader — the inner work that separates the 5% from everyone else. You can copy a call once; you cannot copy a process.',
     },
     {
-      q: 'What is the live stream schedule?',
-      a: 'Live trading sessions run during NY market hours (9:30 AM – 11:30 AM EST) Monday through Friday. All sessions are recorded and posted in the Discord for members who can\'t attend live. Replays are available 24/7.',
+      q: 'Do I need to be experienced?',
+      a: 'Some trading experience helps, but the framework works for traders at any level. What matters more is that you are serious about improvement and willing to do the inner work — the journaling, the review, the deliberate practice.',
     },
     {
-      q: 'What is the refund policy?',
-      a: 'No refunds, but you can cancel anytime — no contracts, no questions asked. If you cancel mid-month, you keep access until the end of your billing cycle. We don\'t lock you in.',
+      q: 'What is the time commitment?',
+      a: 'Live sessions run during NY market hours and are recorded. Plan on 3 to 5 hours per week if you want to fully use the resources, but you can engage at your own pace. The community moves with you, not against you.',
+    },
+    {
+      q: 'Can I cancel anytime?',
+      a: 'Yes. Cancel anytime, no questions asked. Your founding member rate is locked for life as long as your subscription stays active — if you leave and want to rejoin later, you would come back in at the current price.',
     },
   ]
   return (
     <section className="section">
       <div className="container">
         <div style={{ textAlign: 'center', marginBottom: 50 }}>
-          <h2 className="h-section">Frequently Asked Questions</h2>
-          <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', marginTop: 14 }}>
-            Everything you need to know about joining the Inner Circle.
-          </p>
+          <h2 className="h-section">Common questions</h2>
         </div>
         <div style={{ maxWidth: 820, margin: '0 auto', display: 'flex', flexDirection: 'column', gap: 14 }}>
           {items.map((item, i) => (
@@ -642,21 +512,17 @@ function FAQ() {
 function FinalCTA() {
   const spotsLeft = TIER.capacity - TIER.filled
   const progress = (TIER.filled / TIER.capacity) * 100
-
   return (
     <section className="section" style={{ position: 'relative', overflow: 'hidden' }}>
       <div className="ambient-glow" style={{ width: 800, height: 400, background: 'var(--neon)', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', opacity: 0.06 }} />
       <div className="container" style={{ position: 'relative', zIndex: 1, textAlign: 'center' }}>
         <h2 className="h-section">
-          You've seen the system.<br />
-          You know what's at stake.
+          Join the cohort.<br />
+          Build the inner game.
         </h2>
         <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', maxWidth: 720, margin: '24px auto 0', lineHeight: 1.7 }}>
-          Every day you wait is another day you're trading without an edge.
-          Lock in your <strong style={{ color: 'var(--text)' }}>${TIER.current}/mo</strong> rate now — it goes to ${TIER.next} at {TIER.capacity} members and it won't come back down.
+          The founding cohort caps at <strong style={{ color: 'var(--text)' }}>100 members</strong> at <strong style={{ color: 'var(--text)' }}>\${TIER.current}/mo</strong>. After that, the rate moves to \${TIER.next} for new members. Founding members stay at their rate as long as they stay active.
         </p>
-
-        {/* Progress card */}
         <div className="card" style={{
           maxWidth: 540,
           margin: '50px auto 36px',
@@ -672,7 +538,7 @@ function FinalCTA() {
             textAlign: 'center',
             marginBottom: 16,
           }}>
-            Founding Member Spots Remaining
+            Founding Cohort Progress
           </div>
           <div style={{
             height: 12,
@@ -682,7 +548,7 @@ function FinalCTA() {
             position: 'relative',
           }}>
             <div style={{
-              width: `${progress}%`,
+              width: `${Math.max(progress, 2)}%`,
               height: '100%',
               background: 'linear-gradient(90deg, var(--neon-dim), var(--neon), #aaffd6, var(--neon), var(--neon-dim))',
               backgroundSize: '200% 100%',
@@ -693,18 +559,16 @@ function FinalCTA() {
           </div>
           <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 12, fontSize: '0.85rem' }}>
             <span className="text-neon" style={{ fontWeight: 700 }}>
-              {spotsLeft} SPOTS LEFT AT ${TIER.current}/MO
+              {spotsLeft} of {TIER.capacity} spots open
             </span>
             <span style={{ color: 'var(--text-muted)' }}>
-              {TIER.capacity}/{TIER.capacity} = PRICE JUMPS TO ${TIER.next}
+              Rate jumps to \${TIER.next} at full
             </span>
           </div>
         </div>
-
         <a href={LINKS.whopJoin} target="_blank" rel="noreferrer" className="btn btn-primary btn-lg" style={{ padding: '24px 60px' }}>
-          LOCK IN ${TIER.current} NOW
+          LOCK IN \${TIER.current}/MO
         </a>
-
         <div style={{
           display: 'flex',
           justifyContent: 'center',
@@ -734,7 +598,7 @@ export default function Home() {
     <>
       <Hero />
       <StatsStrip />
-      <Testimonials />
+      <WhoFor />
       <Pricing />
       <FAQ />
       <FinalCTA />
