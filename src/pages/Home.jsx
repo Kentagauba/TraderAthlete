@@ -19,7 +19,7 @@ function WarningBar() {
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, flexWrap: 'wrap' }}>
         <AlertTriangle size={16} color="#ff6666" />
         <span style={{ color: '#ffb3b3', fontSize: '0.95rem', fontWeight: 500 }}>
-          Price locks for life at <strong style={{ color: '#fff' }}>\${TIER.current}/mo</strong> for the first {TIER.capacity} members. Goes to <strong style={{ color: '#fff' }}>\${TIER.next}</strong> after.
+          Price locks for life at <strong style={{ color: '#fff' }}>${TIER.current}/mo</strong> for the first {TIER.capacity} members. Goes to <strong style={{ color: '#fff' }}>${TIER.next}</strong> after.
         </span>
       </div>
     </div>
@@ -61,7 +61,7 @@ function Hero() {
           fontSize: 'clamp(3rem, 7.5vw, 6rem)',
           lineHeight: 1.02,
           marginBottom: 0,
-          letterSpacing: '-0.01em',
+          letterSpacing: '0.01em',
         }}>
           STOP BEING LIQUIDITY.
         </h1>
@@ -70,7 +70,7 @@ function Hero() {
           fontSize: 'clamp(3rem, 7.5vw, 6rem)',
           lineHeight: 1.02,
           marginTop: 8,
-          letterSpacing: '-0.01em',
+          letterSpacing: '0.01em',
           textShadow: '0 0 40px var(--neon-glow)',
         }}>
           START TRADING LIKE A WHALE.
@@ -120,7 +120,7 @@ function Hero() {
           letterSpacing: '0.05em',
           textTransform: 'uppercase',
         }}>
-          🔥 First {TIER.capacity} members at \${TIER.current}/mo — rate locked for life. Goes to \${TIER.next} after.
+          🔥 First {TIER.capacity} members at ${TIER.current}/mo — rate locked for life. Goes to ${TIER.next} after.
         </p>
 
         <div className="reveal" style={{ animationDelay: '0.6s', marginTop: 80, paddingTop: 40, borderTop: '1px solid var(--card-border)', display: 'flex', justifyContent: 'center' }}>
@@ -357,15 +357,15 @@ function Pricing() {
               Inner Circle VIP
             </h3>
             <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'center', gap: 12, marginBottom: 8 }}>
-              <span style={{ color: 'var(--text-dim)', textDecoration: 'line-through', fontSize: '1.6rem' }}>\${TIER.next}</span>
-              <span className="display text-neon" style={{ fontSize: '4.5rem', textShadow: '0 0 40px var(--neon-glow)' }}>\${TIER.current}</span>
+              <span style={{ color: 'var(--text-dim)', textDecoration: 'line-through', fontSize: '1.6rem' }}>${TIER.next}</span>
+              <span className="display text-neon" style={{ fontSize: '4.5rem', textShadow: '0 0 40px var(--neon-glow)' }}>${TIER.current}</span>
               <span style={{ color: 'var(--text-muted)', fontSize: '1.1rem' }}>/mo</span>
             </div>
             <p style={{ color: 'var(--text)', textAlign: 'center', fontSize: '0.9rem', fontWeight: 600, marginBottom: 6 }}>
               First 100 lock this rate <span className="text-neon">for life</span>
             </p>
             <p style={{ color: 'var(--text-muted)', textAlign: 'center', fontSize: '0.85rem', marginBottom: 26 }}>
-              Rate moves to \${TIER.next}/mo at 100 members
+              Rate moves to ${TIER.next}/mo at 100 members
             </p>
             <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 28px', display: 'flex', flexDirection: 'column', gap: 14 }}>
               {[
@@ -493,7 +493,7 @@ function FinalCTA() {
         <h2 className="h-section">JOIN THE DOJO.</h2>
         <h2 className="h-section text-neon" style={{ marginTop: 8 }}>BUILD THE INNER GAME.</h2>
         <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', maxWidth: 720, margin: '24px auto 0', lineHeight: 1.7 }}>
-          The first <strong style={{ color: 'var(--text)' }}>{TIER.capacity} members</strong> lock in <strong style={{ color: 'var(--text)' }}>\${TIER.current}/mo</strong> for life. After that, the rate moves to \${TIER.next}. Members who stay active keep their rate.
+          The first <strong style={{ color: 'var(--text)' }}>{TIER.capacity} members</strong> lock in <strong style={{ color: 'var(--text)' }}>${TIER.current}/mo</strong> for life. After that, the rate moves to ${TIER.next}. Members who stay active keep their rate.
         </p>
         <div className="card" style={{
           maxWidth: 540,
@@ -534,12 +534,12 @@ function FinalCTA() {
               {spotsLeft} of {TIER.capacity} spots open
             </span>
             <span style={{ color: 'var(--text-muted)' }}>
-              Rate jumps to \${TIER.next} at full
+              Rate jumps to ${TIER.next} at full
             </span>
           </div>
         </div>
         <a href={LINKS.whopJoin} target="_blank" rel="noreferrer" className="btn btn-primary btn-lg" style={{ padding: '24px 60px' }}>
-          JOIN THE DOJO — \${TIER.current}/MO
+          JOIN THE DOJO — ${TIER.current}/MO
         </a>
         <div style={{
           display: 'flex',
