@@ -86,7 +86,7 @@ function Hero() {
           marginRight: 'auto',
           lineHeight: 1.6,
         }}>
-          Most retail traders are the liquidity. They chase, panic, revenge-trade — and get harvested by traders who train the mental game. I built the dojo to teach the other side: deliberate practice, state control, defined setups, accountability. <strong style={{ color: 'var(--text)' }}>No theory. Real reps.</strong>
+          Most retail traders are the liquidity. They chase, panic, revenge-trade — and get out-traded by traders who train the mental game. I built the dojo to teach the other side: deliberate practice, state control, defined setups, accountability. 
         </p>
 
         <div className="reveal" style={{ animationDelay: '0.4s', marginTop: 48 }}>
@@ -221,7 +221,7 @@ function IfThisIsYou() {
     },
     {
       title: 'You trade in isolation',
-      body: 'Discord groups are noise. Twitter is performance. You\'ve never been in a room with traders who actually review their losers honestly. So you keep making the same mistake alone.',
+      body: 'Discord groups are noise. Twitter is performance. You\'ve never been in a room with traders who actually review their trades honestly. So you keep making the same mistake alone.',
     },
   ]
   return (
