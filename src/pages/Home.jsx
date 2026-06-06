@@ -86,7 +86,7 @@ function Hero() {
           marginRight: 'auto',
           lineHeight: 1.6,
         }}>
-          Most retail traders are the liquidity. They chase, panic, revenge-trade — and get out-traded by traders who train the mental game. I built the dojo to teach the other side: deliberate practice, state control, defined setups, accountability. 
+          Most retail traders are the liquidity. They chase, panic, revenge-trade — and get swept by traders who train the mental game. I built the dojo to teach the other side: deliberate practice, state control, defined setups, accountability. 
         </p>
 
         <div className="reveal" style={{ animationDelay: '0.4s', marginTop: 48 }}>
