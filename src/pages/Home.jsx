@@ -135,6 +135,7 @@ function Hero() {
               width: 44, height: 44, borderRadius: '50%',
               border: '2px solid var(--neon)',
               objectFit: 'cover',
+              objectPosition: 'center 20%',
               boxShadow: '0 0 12px rgba(0,255,136,0.4)',
             }} />
             <div style={{ textAlign: 'left' }}>
