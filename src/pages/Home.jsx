@@ -154,9 +154,9 @@ function Hero() {
 // ============================================================
 function StatsStrip() {
   const stats = [
-    { value: 'MNQ · NQ', label: 'MARKETS I TRADE LIVE', highlight: false },
+    { value: 'NQ · ES', label: 'MARKETS I TRADE LIVE', highlight: false },
     { value: 'LIVE', label: 'NY HOURS, IN THE CHAIR DAILY', highlight: true },
-    { value: '5', label: 'PRICING TIERS · LADDER RISES', highlight: false },
+    { value: 'YOUR PATH', label: 'SIM → EVAL → FUNDED → PAYOUT', highlight: false },
     { value: 'DIRECT', label: '1-ON-1 ACCESS', highlight: false },
   ]
   return (
