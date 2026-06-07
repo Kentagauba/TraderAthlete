@@ -162,9 +162,10 @@ function StatsStrip() {
   return (
     <section style={{
       padding: '60px 0',
-      background: 'linear-gradient(180deg, transparent, rgba(0,255,136,0.04), transparent)',
-      borderTop: '1px solid var(--card-border)',
-      borderBottom: '1px solid var(--card-border)',
+      background: 'radial-gradient(ellipse 60% 100% at 50% 50%, rgba(0,255,136,0.15), rgba(0,255,136,0.06) 60%, transparent 90%)',
+      borderTop: '1px solid rgba(0,255,136,0.25)',
+      borderBottom: '1px solid rgba(0,255,136,0.25)',
+      boxShadow: 'inset 0 0 80px rgba(0,255,136,0.08)',
     }}>
       <div className="container">
         <div className="stats-grid" style={{
