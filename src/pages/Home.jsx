@@ -35,7 +35,7 @@ function WarningBar() {
 function Hero() {
   const t = tier
   return (
-    <section className="section" style={{ paddingTop: 60, paddingBottom: 80, position: 'relative', overflow: 'hidden' }}>
+    <section className="section" style={{ paddingTop: 60, paddingBottom: 40, position: 'relative', overflow: 'hidden' }}>
       <div className="ambient-glow" style={{ width: 900, height: 600, background: 'var(--neon)', top: '20%', left: '50%', transform: 'translateX(-50%)', opacity: 0.12 }} />
       <div style={{
         position: 'absolute',
