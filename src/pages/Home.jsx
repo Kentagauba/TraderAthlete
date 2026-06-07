@@ -130,17 +130,17 @@ function Hero() {
         </p>
 
         <div className="reveal" style={{ animationDelay: '0.6s', marginTop: 80, paddingTop: 40, borderTop: '1px solid var(--card-border)', display: 'flex', justifyContent: 'center' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 14, padding: '8px 22px 8px 8px', background: 'var(--card)', border: '1px solid var(--card-border)', borderRadius: 999 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 20, padding: '14px 32px 14px 14px', background: 'var(--card)', border: '1px solid rgba(0,255,136,0.3)', borderRadius: 999, boxShadow: '0 0 40px rgba(0,255,136,0.15)' }}>
             <img src="/kenta.jpg" alt="Kenta Gauba" style={{
-              width: 44, height: 44, borderRadius: '50%',
-              border: '2px solid var(--neon)',
+              width: 72, height: 72, borderRadius: '50%',
+              border: '3px solid var(--neon)',
               objectFit: 'cover',
               objectPosition: 'center 20%',
-              boxShadow: '0 0 12px rgba(0,255,136,0.4)',
+              boxShadow: '0 0 20px rgba(0,255,136,0.5)',
             }} />
             <div style={{ textAlign: 'left' }}>
-              <div style={{ fontWeight: 700, fontSize: '0.95rem' }}>Kenta</div>
-              <div style={{ color: 'var(--text-muted)', fontSize: '0.8rem' }}>Founder · Discretionary Futures Trader</div>
+              <div style={{ fontWeight: 800, fontSize: '1.35rem', letterSpacing: '-0.01em' }}>Kenta</div>
+              <div style={{ color: 'var(--text-muted)', fontSize: '0.95rem', marginTop: 2 }}>Founder · Discretionary Futures Trader</div>
             </div>
           </div>
         </div>
@@ -162,10 +162,10 @@ function StatsStrip() {
   return (
     <section style={{
       padding: '60px 0',
-      background: 'radial-gradient(ellipse 60% 100% at 50% 50%, rgba(0,255,136,0.15), rgba(0,255,136,0.06) 60%, transparent 90%)',
-      borderTop: '1px solid rgba(0,255,136,0.25)',
-      borderBottom: '1px solid rgba(0,255,136,0.25)',
-      boxShadow: 'inset 0 0 80px rgba(0,255,136,0.08)',
+      background: 'radial-gradient(ellipse 70% 120% at 50% 50%, rgba(0,255,136,0.28), rgba(0,255,136,0.12) 50%, transparent 85%)',
+      borderTop: '1px solid rgba(0,255,136,0.4)',
+      borderBottom: '1px solid rgba(0,255,136,0.4)',
+      boxShadow: 'inset 0 0 120px rgba(0,255,136,0.18), 0 0 60px rgba(0,255,136,0.1)',
     }}>
       <div className="container">
         <div className="stats-grid" style={{
