@@ -44,6 +44,7 @@ function Header() {
           <NavLink to="/" style={linkStyle} end>Home</NavLink>
           <NavLink to="/coaching" style={linkStyle}>Coaching</NavLink>
           <a href="/#membership" style={{ color: 'var(--text)', fontWeight: 500, fontSize: '0.95rem' }}>Membership</a>
+          <NavLink to="/risk-calculator" style={linkStyle}>Risk Calculator</NavLink>
           <a href={LINKS.memberLogin} className="btn btn-primary" style={{ padding: '12px 26px', fontSize: '0.85rem' }}>
             MEMBER LOGIN
           </a>
@@ -73,6 +74,7 @@ function Header() {
           <NavLink to="/" style={linkStyle} end>Home</NavLink>
           <NavLink to="/coaching" style={linkStyle}>Coaching</NavLink>
           <a href="/#membership" style={{ color: 'var(--text)' }}>Membership</a>
+          <NavLink to="/risk-calculator" style={linkStyle}>Risk Calculator</NavLink>
           <a href={LINKS.memberLogin} className="btn btn-primary" style={{ alignSelf: 'flex-start' }}>MEMBER LOGIN</a>
         </div>
       )}
@@ -109,6 +111,7 @@ function Footer() {
               <li><a href="#" style={{ color: 'var(--text-muted)' }}>Strategies</a></li>
               <li><a href="#" style={{ color: 'var(--text-muted)' }}>Psychology</a></li>
               <li><a href="#" style={{ color: 'var(--text-muted)' }}>Live Trading</a></li>
+              <li><Link to="/risk-calculator" style={{ color: 'var(--text-muted)' }}>Risk Calculator</Link></li>
             </ul>
           </div>
           <div>
