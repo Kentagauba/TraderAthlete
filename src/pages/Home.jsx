@@ -131,16 +131,12 @@ function Hero() {
 
         <div className="reveal" style={{ animationDelay: '0.6s', marginTop: 80, paddingTop: 40, borderTop: '1px solid var(--card-border)', display: 'flex', justifyContent: 'center' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 14, padding: '8px 22px 8px 8px', background: 'var(--card)', border: '1px solid var(--card-border)', borderRadius: 999 }}>
-            <div style={{
+            <img src="/kenta.jpg" alt="Kenta Gauba" style={{
               width: 44, height: 44, borderRadius: '50%',
-              background: 'linear-gradient(135deg, #0a3d2a, #00ff88)',
               border: '2px solid var(--neon)',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              fontSize: '0.7rem', fontWeight: 700, color: '#000',
-              letterSpacing: '0.05em',
-            }}>
-              KENTA
-            </div>
+              objectFit: 'cover',
+              boxShadow: '0 0 12px rgba(0,255,136,0.4)',
+            }} />
             <div style={{ textAlign: 'left' }}>
               <div style={{ fontWeight: 700, fontSize: '0.95rem' }}>Kenta</div>
               <div style={{ color: 'var(--text-muted)', fontSize: '0.8rem' }}>Founder · Discretionary Futures Trader</div>
