@@ -1,11 +1,14 @@
-import { Check, X, ChevronDown, AlertTriangle, ArrowRight } from 'lucide-react'
+import { Check, X, ChevronDown, AlertTriangle, ArrowRight, Crown, Calendar, BarChart3 } from 'lucide-react'
 import { useState } from 'react'
-import { LINKS, TIER } from '../config.js'
+import { LINKS, TIER, LIFETIME, currentTier } from '../config.js'
+
+const tier = currentTier()
 
 // ============================================================
 // TOP WARNING BAR
 // ============================================================
 function WarningBar() {
+  const t = tier
   return (
     <div style={{
       width: '100%',
@@ -19,7 +22,7 @@ function WarningBar() {
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, flexWrap: 'wrap' }}>
         <AlertTriangle size={16} color="#ff6666" />
         <span style={{ color: '#ffb3b3', fontSize: '0.95rem', fontWeight: 500 }}>
-          Price locks for life at <strong style={{ color: '#fff' }}>${TIER.current}/mo</strong> for the first {TIER.capacity} members. Goes to <strong style={{ color: '#fff' }}>${TIER.next}</strong> after.
+          Tier {t.index}: <strong style={{ color: '#fff' }}>{'$'}{t.price}/mo</strong> for {t.rangeMax ? `members ${t.rangeMin}–${t.rangeMax}` : `members ${t.rangeMin}+`}. Locks for life as each tier fills.
         </span>
       </div>
     </div>
@@ -27,10 +30,10 @@ function WarningBar() {
 }
 
 // ============================================================
-// HERO (centered, Replit-style)
+// HERO
 // ============================================================
 function Hero() {
-  const spotsLeft = TIER.capacity - TIER.filled
+  const t = tier
   return (
     <section className="section" style={{ paddingTop: 60, paddingBottom: 80, position: 'relative', overflow: 'hidden' }}>
       <div className="ambient-glow" style={{ width: 900, height: 600, background: 'var(--neon)', top: '20%', left: '50%', transform: 'translateX(-50%)', opacity: 0.12 }} />
@@ -86,7 +89,10 @@ function Hero() {
           marginRight: 'auto',
           lineHeight: 1.6,
         }}>
-          Most retail traders are the liquidity. They chase, panic, revenge-trade — and get swept by traders who train the mental game. I built the dojo to teach the other side: deliberate practice, state control, defined setups, accountability. 
+          Most retail traders are the liquidity. They chase, panic, revenge-trade — and get swept by traders who train the mental game. I built the dojo to teach the other side: deliberate practice, state control, defined setups, accountability.
+        </p>
+        <p className="reveal" style={{ animationDelay: '0.35s', fontSize: '1.5rem', fontWeight: 800, color: 'var(--text)', textAlign: 'center', marginTop: 28, letterSpacing: '0.02em' }}>
+          Less noise. <span className="text-neon">More reps.</span>
         </p>
 
         <div className="reveal" style={{ animationDelay: '0.4s', marginTop: 48 }}>
@@ -120,7 +126,7 @@ function Hero() {
           letterSpacing: '0.05em',
           textTransform: 'uppercase',
         }}>
-          🔥 First {TIER.capacity} members at ${TIER.current}/mo — rate locked for life. Goes to ${TIER.next} after.
+          🔥 You're in Tier {t.index} — {'$'}{t.price}/mo for members {t.rangeMin}{t.rangeMax ? `–${t.rangeMax}` : '+'}. Locks for life.
         </p>
 
         <div className="reveal" style={{ animationDelay: '0.6s', marginTop: 80, paddingTop: 40, borderTop: '1px solid var(--card-border)', display: 'flex', justifyContent: 'center' }}>
@@ -153,7 +159,7 @@ function StatsStrip() {
   const stats = [
     { value: 'MNQ · NQ', label: 'MARKETS I TRADE LIVE', highlight: false },
     { value: 'LIVE', label: 'NY HOURS, IN THE CHAIR DAILY', highlight: true },
-    { value: TIER.capacity.toString(), label: 'MEMBER CAP AT THIS PRICE', highlight: false },
+    { value: '5', label: 'PRICING TIERS · LADDER RISES', highlight: false },
     { value: 'DIRECT', label: '1-ON-1 ACCESS', highlight: false },
   ]
   return (
@@ -282,9 +288,10 @@ function IfThisIsYou() {
 }
 
 // ============================================================
-// PRICING
+// PRICING — Monthly + Lifetime side-by-side
 // ============================================================
 function Pricing() {
+  const t = tier
   return (
     <section className="section" id="membership" style={{
       background: 'radial-gradient(ellipse 80% 60% at 50% 50%, rgba(0,255,136,0.08), transparent)',
@@ -292,9 +299,10 @@ function Pricing() {
     }}>
       <div className="container">
         <div style={{ textAlign: 'center', marginBottom: 60 }}>
-          <h2 className="h-section">ONE MEMBERSHIP.</h2>
-          <h2 className="h-section text-neon" style={{ marginTop: 8 }}>EVERYTHING INSIDE.</h2>
+          <h2 className="h-section">PICK YOUR TIER.</h2>
+          <h2 className="h-section text-neon" style={{ marginTop: 8 }}>JOIN THE DOJO.</h2>
         </div>
+
         <div className="pricing-grid" style={{
           display: 'grid',
           gridTemplateColumns: '1fr 1fr',
@@ -303,41 +311,60 @@ function Pricing() {
           maxWidth: 1080,
           margin: '0 auto',
         }}>
-          <div style={{ padding: '32px 8px' }}>
-            <h3 className="display" style={{ fontSize: '1.75rem', marginBottom: 30 }}>
-              What's inside:
-            </h3>
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
-              {[
-                ['Live trade sessions', 'NY hours · MNQ, NQ, ES'],
-                ['Pre-market briefings', 'Levels, bias, game plan'],
-                ['Weekly live Q&A', 'Bring your charts and trades'],
-                ['Mental game library', 'The inner work most skip'],
-                ['Private Discord', 'Serious traders only'],
-                ['Direct access to me', 'Real feedback, real questions'],
-              ].map(([item, desc], i, arr) => (
-                <div key={i} style={{
-                  display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-                  padding: '18px 0',
-                  borderBottom: i === arr.length - 1 ? 'none' : '1px solid var(--card-border)',
-                }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-                    <Check size={18} color="var(--neon)" strokeWidth={3} />
-                    <div>
-                      <div style={{ color: 'var(--text)', fontWeight: 600, fontSize: '1.05rem' }}>
-                        {item}
-                      </div>
-                      <div style={{ color: 'var(--text-muted)', fontSize: '0.85rem', marginTop: 2 }}>
-                        {desc}
-                      </div>
-                    </div>
-                  </div>
-                  <span style={{ color: 'var(--neon)', fontSize: '0.78rem', fontWeight: 700, letterSpacing: '0.1em' }}>INCLUDED</span>
-                </div>
-              ))}
+          {/* MONTHLY CARD */}
+          <div className="card" style={{ position: 'relative', display: 'flex', flexDirection: 'column', padding: '32px 30px' }}>
+            <div style={{
+              fontSize: '0.78rem', fontWeight: 700, letterSpacing: '0.12em',
+              color: 'var(--text-muted)', textTransform: 'uppercase', marginBottom: 8,
+            }}>
+              MONTHLY MEMBERSHIP
             </div>
+            <h3 className="display" style={{ fontSize: '1.6rem', marginBottom: 18 }}>
+              Inner Circle VIP
+            </h3>
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: 12, marginBottom: 14 }}>
+              <span className="display text-neon" style={{ fontSize: '3.6rem', textShadow: '0 0 30px var(--neon-glow)' }}>{'$'}{t.price}</span>
+              <span style={{ color: 'var(--text-muted)', fontSize: '1.1rem' }}>/mo</span>
+            </div>
+            <div style={{
+              padding: '12px 14px',
+              background: 'rgba(0,255,136,0.06)',
+              border: '1px solid rgba(0,255,136,0.2)',
+              borderRadius: 10,
+              marginBottom: 22,
+            }}>
+              <div style={{ fontSize: '0.82rem', color: 'var(--neon)', fontWeight: 700, letterSpacing: '0.05em' }}>
+                TIER {t.index} of {t.total} · Locks for life
+              </div>
+              <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginTop: 4 }}>
+                {t.nextTierPrice ? `Next: $${t.nextTierPrice}/mo at ${t.rangeMax + 1} members` : `Top tier — no further increases`}
+              </div>
+            </div>
+            <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 28px', display: 'flex', flexDirection: 'column', gap: 12 }}>
+              {[
+                'Live trade sessions · NY hours',
+                'Pre-market briefings',
+                'Weekly live Q&A',
+                'Mental game library',
+                'Private Discord',
+                'Direct access to me',
+              ].map((feat, i) => (
+                <li key={i} style={{ display: 'flex', alignItems: 'center', gap: 12, fontSize: '0.98rem' }}>
+                  <Check size={18} color="var(--neon)" strokeWidth={3} />
+                  {feat}
+                </li>
+              ))}
+            </ul>
+            <a href={LINKS.whopJoin} target="_blank" rel="noreferrer" className="btn btn-primary btn-lg" style={{ width: '100%', marginTop: 'auto' }}>
+              JOIN THE DOJO
+            </a>
+            <p style={{ textAlign: 'center', color: 'var(--text-muted)', fontSize: '0.85rem', marginTop: 12 }}>
+              Cancel anytime · Rate locked for life
+            </p>
           </div>
-          <div className="card card-glow" style={{ position: 'relative', display: 'flex', flexDirection: 'column' }}>
+
+          {/* LIFETIME CARD */}
+          <div className="card card-glow" style={{ position: 'relative', display: 'flex', flexDirection: 'column', padding: '32px 30px', border: '2px solid var(--neon)' }}>
             <div style={{
               position: 'absolute',
               top: -16, left: '50%',
@@ -350,41 +377,50 @@ function Pricing() {
               fontSize: '0.78rem',
               letterSpacing: '0.12em',
               animation: 'pulseGlow 2.2s ease-in-out infinite',
+              display: 'flex', alignItems: 'center', gap: 6,
             }}>
-              FIRST 100 ONLY
+              <Crown size={14} strokeWidth={3} /> BEST VALUE
             </div>
-            <h3 className="display" style={{ fontSize: '1.6rem', textAlign: 'center', marginTop: 14, marginBottom: 18 }}>
-              Inner Circle VIP
+            <div style={{
+              fontSize: '0.78rem', fontWeight: 700, letterSpacing: '0.12em',
+              color: 'var(--text-muted)', textTransform: 'uppercase', marginBottom: 8, marginTop: 14,
+            }}>
+              LIFETIME MEMBERSHIP
+            </div>
+            <h3 className="display" style={{ fontSize: '1.6rem', marginBottom: 18 }}>
+              Lifetime Founder
             </h3>
-            <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'center', gap: 12, marginBottom: 8 }}>
-              <span style={{ color: 'var(--text-dim)', textDecoration: 'line-through', fontSize: '1.6rem' }}>${TIER.next}</span>
-              <span className="display text-neon" style={{ fontSize: '4.5rem', textShadow: '0 0 40px var(--neon-glow)' }}>${TIER.current}</span>
-              <span style={{ color: 'var(--text-muted)', fontSize: '1.1rem' }}>/mo</span>
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: 12, marginBottom: 14 }}>
+              <span style={{ color: 'var(--text-dim)', textDecoration: 'line-through', fontSize: '1.6rem' }}>{'$'}{LIFETIME.compareAt}</span>
+              <span className="display text-neon" style={{ fontSize: '3.6rem', textShadow: '0 0 30px var(--neon-glow)' }}>{'$'}{LIFETIME.price}</span>
+              <span style={{ color: 'var(--text-muted)', fontSize: '1.1rem' }}>once</span>
             </div>
-            <p style={{ color: 'var(--text)', textAlign: 'center', fontSize: '0.9rem', fontWeight: 600, marginBottom: 6 }}>
-              First 100 lock this rate <span className="text-neon">for life</span>
-            </p>
-            <p style={{ color: 'var(--text-muted)', textAlign: 'center', fontSize: '0.85rem', marginBottom: 26 }}>
-              Rate moves to ${TIER.next}/mo at 100 members
+            <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', marginBottom: 22, lineHeight: 1.5 }}>
+              For traders who want everything, locked in forever. Lifetime pricing rises as the membership grows.
             </p>
             <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 28px', display: 'flex', flexDirection: 'column', gap: 14 }}>
-              {[
-                'Locked-in rate for life',
-                'Live trade calls + mental game library',
-                'Private Discord',
-                'Cancel anytime — no contracts',
-              ].map((feat, i) => (
-                <li key={i} style={{ display: 'flex', alignItems: 'center', gap: 12, fontSize: '1.02rem' }}>
-                  <Check size={20} color="var(--neon)" strokeWidth={3} />
-                  {feat}
-                </li>
-              ))}
+              <li style={{ display: 'flex', alignItems: 'flex-start', gap: 12, fontSize: '0.98rem' }}>
+                <Check size={18} color="var(--neon)" strokeWidth={3} style={{ flexShrink: 0, marginTop: 4 }} />
+                <span><strong>Everything in monthly</strong> — forever, no recurring payments</span>
+              </li>
+              <li style={{ display: 'flex', alignItems: 'flex-start', gap: 12, fontSize: '0.98rem' }}>
+                <Calendar size={18} color="var(--neon)" strokeWidth={2.5} style={{ flexShrink: 0, marginTop: 4 }} />
+                <span><strong>One free 1-on-1 with Kenta</strong> ($199 value) — redeem within 12 months</span>
+              </li>
+              <li style={{ display: 'flex', alignItems: 'flex-start', gap: 12, fontSize: '0.98rem' }}>
+                <BarChart3 size={18} color="var(--neon)" strokeWidth={2.5} style={{ flexShrink: 0, marginTop: 4 }} />
+                <span><strong>1 year of all TraderAthlete indicators</strong> — Harry Potter Play, ATR Stop, and any new releases</span>
+              </li>
+              <li style={{ display: 'flex', alignItems: 'flex-start', gap: 12, fontSize: '0.98rem' }}>
+                <Crown size={18} color="var(--neon)" strokeWidth={2.5} style={{ flexShrink: 0, marginTop: 4 }} />
+                <span><strong>"Lifetime Founder" Discord role</strong></span>
+              </li>
             </ul>
-            <a href={LINKS.whopJoin} target="_blank" rel="noreferrer" className="btn btn-primary btn-lg" style={{ width: '100%' }}>
-              JOIN THE DOJO
+            <a href={LINKS.whopLifetime} target="_blank" rel="noreferrer" className="btn btn-primary btn-lg" style={{ width: '100%', marginTop: 'auto' }}>
+              GET LIFETIME ACCESS
             </a>
             <p style={{ textAlign: 'center', color: 'var(--text-muted)', fontSize: '0.85rem', marginTop: 12 }}>
-              Cancel anytime · Instant access
+              One-time payment · No recurring charges
             </p>
           </div>
         </div>
@@ -409,6 +445,10 @@ function FAQ() {
       a: 'Primarily MNQ and NQ (Nasdaq futures), with ES (S&P futures) as a secondary focus. All live calls run on NY market hours.',
     },
     {
+      q: 'What is the difference between Monthly and Lifetime?',
+      a: 'Monthly gets you full dojo access (live calls, mental game library, Discord) at the current tier price, locked for life. Lifetime gets you all of that forever as a one-time payment, plus a free 1-on-1 with me and 1 year of access to all my TradingView indicators.',
+    },
+    {
       q: 'Is this just signals?',
       a: 'No. Signals are a small part of it. The core focus is helping you build the mental and structural game of a consistent trader — the inner work that separates the 5% from everyone else. You can copy a call once; you cannot copy a process.',
     },
@@ -417,12 +457,8 @@ function FAQ() {
       a: 'Some trading experience helps, but the framework works at any level. What matters more is that you are serious about improvement and willing to do the inner work — the journaling, the review, the deliberate practice.',
     },
     {
-      q: 'What is the time commitment?',
-      a: 'Live sessions run during NY market hours and are recorded. Plan on 3 to 5 hours per week to fully use the resources, but you can engage at your own pace.',
-    },
-    {
       q: 'Can I cancel anytime?',
-      a: 'Yes. Cancel anytime, no questions asked. Your locked-in rate stays as long as your subscription stays active — leave and rejoin later, you would come back at the current price.',
+      a: 'Yes for monthly. Cancel anytime, no questions asked. Your locked-in rate stays as long as your subscription stays active. Lifetime is one-time and non-refundable.',
     },
   ]
   return (
@@ -484,8 +520,7 @@ function FAQ() {
 // FINAL CTA
 // ============================================================
 function FinalCTA() {
-  const spotsLeft = TIER.capacity - TIER.filled
-  const progress = (TIER.filled / TIER.capacity) * 100
+  const t = tier
   return (
     <section className="section" style={{ position: 'relative', overflow: 'hidden' }}>
       <div className="ambient-glow" style={{ width: 800, height: 400, background: 'var(--neon)', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', opacity: 0.08 }} />
@@ -493,67 +528,29 @@ function FinalCTA() {
         <h2 className="h-section">JOIN THE DOJO.</h2>
         <h2 className="h-section text-neon" style={{ marginTop: 8 }}>BUILD THE INNER GAME.</h2>
         <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', maxWidth: 720, margin: '24px auto 0', lineHeight: 1.7 }}>
-          The first <strong style={{ color: 'var(--text)' }}>{TIER.capacity} members</strong> lock in <strong style={{ color: 'var(--text)' }}>${TIER.current}/mo</strong> for life. After that, the rate moves to ${TIER.next}. Members who stay active keep their rate.
+          Two ways in. <strong style={{ color: 'var(--text)' }}>Monthly</strong> at the current Tier {t.index} rate of <strong style={{ color: 'var(--text)' }}>{'$'}{t.price}/mo</strong>, locked for life. Or <strong style={{ color: 'var(--text)' }}>Lifetime Founder</strong> at <strong style={{ color: 'var(--text)' }}>{'$'}{LIFETIME.price}</strong> with bonuses. Either way, your rate is locked when you join.
         </p>
-        <div className="card" style={{
-          maxWidth: 540,
-          margin: '50px auto 36px',
-          padding: '24px 28px',
-          textAlign: 'left',
-        }}>
-          <div style={{
-            color: 'var(--text)',
-            fontWeight: 800,
-            fontSize: '0.85rem',
-            letterSpacing: '0.15em',
-            textTransform: 'uppercase',
-            textAlign: 'center',
-            marginBottom: 16,
-          }}>
-            Dojo Progress
-          </div>
-          <div style={{
-            height: 12,
-            background: 'var(--card-2)',
-            borderRadius: 999,
-            overflow: 'hidden',
-            position: 'relative',
-          }}>
-            <div style={{
-              width: `${Math.max(progress, 2)}%`,
-              height: '100%',
-              background: 'linear-gradient(90deg, var(--neon-dim), var(--neon), #aaffd6, var(--neon), var(--neon-dim))',
-              backgroundSize: '200% 100%',
-              borderRadius: 999,
-              animation: 'shimmer 3s linear infinite',
-              boxShadow: '0 0 14px var(--neon-glow)',
-            }} />
-          </div>
-          <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 12, fontSize: '0.85rem' }}>
-            <span className="text-neon" style={{ fontWeight: 700 }}>
-              {spotsLeft} of {TIER.capacity} spots open
-            </span>
-            <span style={{ color: 'var(--text-muted)' }}>
-              Rate jumps to ${TIER.next} at full
-            </span>
-          </div>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: 18, marginTop: 50, flexWrap: 'wrap' }}>
+          <a href={LINKS.whopJoin} target="_blank" rel="noreferrer" className="btn btn-primary btn-lg" style={{ padding: '20px 40px' }}>
+            JOIN MONTHLY — {'$'}{t.price}/MO
+          </a>
+          <a href={LINKS.whopLifetime} target="_blank" rel="noreferrer" className="btn btn-primary btn-lg" style={{ padding: '20px 40px', background: 'transparent', color: 'var(--neon)', border: '2px solid var(--neon)' }}>
+            GET LIFETIME — {'$'}{LIFETIME.price}
+          </a>
         </div>
-        <a href={LINKS.whopJoin} target="_blank" rel="noreferrer" className="btn btn-primary btn-lg" style={{ padding: '24px 60px' }}>
-          JOIN THE DOJO — ${TIER.current}/MO
-        </a>
         <div style={{
           display: 'flex',
           justifyContent: 'center',
           gap: 36,
-          marginTop: 28,
+          marginTop: 36,
           flexWrap: 'wrap',
           color: 'var(--text-muted)',
           fontSize: '0.95rem',
         }}>
-          {['Cancel anytime', 'Instant access', 'No contracts'].map((t, i) => (
+          {['Cancel anytime (monthly)', 'Instant access', 'No contracts'].map((tx, i) => (
             <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
               <Check size={18} color="var(--neon)" strokeWidth={3} />
-              {t}
+              {tx}
             </div>
           ))}
         </div>
